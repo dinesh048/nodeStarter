@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/demo");
-const db = mongoose.connection;
-db.on("error", () => {
-  console.log("error");
-});
-db.once("open", () => {
-  console.log("connected");
-});
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((error) => console.error("MongoDB connection error:", error));

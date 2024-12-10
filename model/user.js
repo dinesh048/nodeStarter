@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const userSchema = new mongoose.Schema({
+
+const userSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -7,15 +8,17 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   age: {
     type: Number,
     required: true,
   },
-  created_at: {
+  registered_on: {
     type: Date,
     default: new Date(),
   },
 });
-let user = mongoose.model("user", userSchema);
-module.exports = user;
+
+var studentdata = mongoose.model("user", userSchema);
+module.exports = studentdata;
